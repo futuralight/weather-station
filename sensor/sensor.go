@@ -5,8 +5,8 @@ import (
 	"github.com/d2r2/go-i2c"
 )
 
-//SensesAbler - sensor interface
-type SensesAbler interface {
+//Sensitive - sensor interface
+type Sensitive interface {
 	SenseTemperature() (float32, error)
 	SensePressure() (float32, error)
 	SenseHumidity() (float32, error)
