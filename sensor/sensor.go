@@ -3,6 +3,7 @@ package sensor
 import (
 	"github.com/d2r2/go-bsbmp"
 	"github.com/d2r2/go-i2c"
+	"github.com/d2r2/go-logger"
 )
 
 //Sensitive - sensor interface
@@ -35,6 +36,11 @@ func (bme280 *BME280Sensor) SenseHumidity() (float32, error) {
 
 //CreateBme280Sensor - return brand new BME280Sensor
 func CreateBme280Sensor(bus int) (BME280Sensor, error) {
+
+	defer logger.FinalizeLogger()
+	// Uncomment/comment next lines to suppress/increase verbosity of output
+	logger.ChangePackageLogLevel("i2c", logger.InfoLevel)
+	logger.ChangePackageLogLevel("bsbmp", logger.InfoLevel)
 	var bme280Sensor BME280Sensor
 	i2c, err := i2c.NewI2C(0x76, bus)
 	if err != nil {
