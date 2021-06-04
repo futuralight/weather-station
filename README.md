@@ -1,2 +1,2 @@
 # weather-station
-Raspberry Pi BME280 weather station
+Weather station on Raspberry Pi BME280
